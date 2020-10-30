@@ -15,12 +15,14 @@ class CreateBenchmarksTable extends Migration
     {
         Schema::create('benchmarks', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor('results');
-            $table->foreignId('workload');
-            $table->integer('preparetime');
-            $table->integer('runtime');
-            $table->integer('hdfs_throughput');
+            $table->string('name');
             $table->timestamps();
+            $table->timestamp('started')->nullable()->default(null);
+            $table->timestamp('finished')->nullable()->default(null);
+            $table->integer('waiting_for_benchmark');
+            $table->integer('cluster_id');
+            $table->integer('size');
+            $table->string('status');
         });
     }
 

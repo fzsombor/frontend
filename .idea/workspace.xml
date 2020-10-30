@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99d41cec-cfb0-4151-afa6-cfb5bee1695f" name="Default Changelist" comment="" />
+    <list default="true" id="99d41cec-cfb0-4151-afa6-cfb5bee1695f" name="Default Changelist" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/app/charts/ExampleChart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/frontend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/frontend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actions/Jetstream/DeleteUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Jetstream/DeleteUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BenchmarkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BenchmarkController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClusterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClusterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkloadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkloadController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Cluster.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Cluster.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_184821_create_clusters_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_12_184821_create_clusters_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_184833_create_workloads_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_12_184833_create_workloads_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_15_191123_create_results_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_15_191834_create_benchmarks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_15_191834_create_benchmarks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/two-factor-challenge.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/two-factor-challenge.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/benchmark.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/benchmarks.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/clusters.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/clusters.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/guest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/guest.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/logout-other-browser-sessions-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/logout-other-browser-sessions-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/workloads.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/workloads.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,11 +51,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
       <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition" />
@@ -63,7 +98,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
-      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
@@ -80,7 +114,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
@@ -139,9 +172,17 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
       <path value="$PROJECT_DIR$/vendor/jenssegers/agent" />
       <path value="$PROJECT_DIR$/vendor/mobiledetect/mobiledetectlib" />
+      <path value="$PROJECT_DIR$/vendor/kyslik/column-sortable" />
+      <path value="$PROJECT_DIR$/vendor/zanysoft/laravel-zip" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-dashboard" />
+      <path value="$PROJECT_DIR$/vendor/spatie/sun" />
+      <path value="$PROJECT_DIR$/vendor/consoletvs/charts" />
+      <path value="$PROJECT_DIR$/vendor/chartisan/php" />
+      <path value="$PROJECT_DIR$/vendor/fidum/laravel-dashboard-chart-tile" />
     </include_path>
   </component>
   <component name="ProjectId" id="1imX5Yh6Vyb00kabSFCpWai3G1R" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -198,20 +239,37 @@
       <workItem from="1602514101494" duration="11239000" />
       <workItem from="1602686732976" duration="7400000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1602794934782</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602794934782</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="880" y="441" width="1071" height="738" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602621528967">
+    <state x="880" y="441" width="1071" height="738" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603978907725">
       <screen x="0" y="23" width="2560" height="1506" />
     </state>
-    <state x="880" y="441" width="1071" height="738" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1506/-1792.470.1792.1097@0.23.2560.1506" timestamp="1602621528967" />
-    <state x="634" y="297" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602784599783">
-      <screen x="0" y="23" width="1792" height="1026" />
+    <state x="880" y="441" width="1071" height="738" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1506/-1792.470.1792.1097@0.23.2560.1506" timestamp="1603978907725" />
+    <state x="1040" y="585" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603881524954">
+      <screen x="0" y="23" width="2560" height="1506" />
+    </state>
+    <state x="1040" y="585" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1506/-1792.470.1792.1097@0.23.2560.1506" timestamp="1603881524954" />
+    <state x="906" y="425" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603890444647">
+      <screen x="0" y="23" width="2560" height="1506" />
     </state>
     <state x="634" y="297" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1792.1026@0.23.1792.1026" timestamp="1602784599783" />
+    <state x="906" y="425" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.2560.1506/-1792.470.1792.1097@0.23.2560.1506" timestamp="1603890444647" />
     <state width="1750" height="537" key="GridCell.Tab.0.bottom" timestamp="1602676382347">
       <screen x="0" y="23" width="1792" height="1028" />
     </state>
@@ -296,6 +354,10 @@
       <screen x="0" y="23" width="2560" height="1506" />
     </state>
     <state width="221" height="457" key="HiddenNamespacesPopup/0.23.2560.1506/-1792.470.1792.1097@0.23.2560.1506" timestamp="1602513695041" />
+    <state x="1038" y="509" key="NewPhpClassDialog" timestamp="1603982948217">
+      <screen x="0" y="23" width="2560" height="1506" />
+    </state>
+    <state x="1038" y="509" key="NewPhpClassDialog/0.23.2560.1506/-1792.470.1792.1097@0.23.2560.1506" timestamp="1603982948217" />
     <state x="715" y="466" key="NewPhpFileDialog" timestamp="1602784658646">
       <screen x="0" y="23" width="1792" height="1026" />
     </state>
@@ -304,5 +366,17 @@
       <screen x="0" y="23" width="2560" height="1506" />
     </state>
     <state x="642" y="162" key="SettingsEditor/0.23.2560.1506/-1792.470.1792.1097@0.23.2560.1506" timestamp="1602621362516" />
+    <state x="496" y="275" key="Vcs.Push.Dialog.v2" timestamp="1602794945248">
+      <screen x="0" y="23" width="1792" height="1026" />
+    </state>
+    <state x="496" y="275" key="Vcs.Push.Dialog.v2/0.23.1792.1026@0.23.1792.1026" timestamp="1602794945248" />
+    <state x="1093" y="697" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603899055827">
+      <screen x="0" y="23" width="2560" height="1506" />
+    </state>
+    <state x="1093" y="697" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.2560.1506/-1792.470.1792.1097@0.23.2560.1506" timestamp="1603899055827" />
+    <state x="945" y="370" width="670" height="676" key="search.everywhere.popup" timestamp="1603821664672">
+      <screen x="0" y="23" width="2560" height="1506" />
+    </state>
+    <state x="945" y="370" width="670" height="676" key="search.everywhere.popup/0.23.2560.1506/-1792.470.1792.1097@0.23.2560.1506" timestamp="1603821664672" />
   </component>
 </project>

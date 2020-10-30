@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Benchmark;
 use App\Models\Cluster;
 use App\Models\Workload;
 use Illuminate\Http\Request;
@@ -10,16 +11,35 @@ class BenchmarkController extends Controller
 {
     public function display()
     {
-        //$data['clusters'] =  Cluster::all();
-        //$data['workloads'] = Workload::all();
-
-        return view('benchmark')/*->with('data', $data)*/ ;
+        $benchmarks = Benchmark::all();
+        $clusters = Cluster::all();
+        $workloads = Workload::all();
+        return view('benchmarks')->with('benchmarks', $benchmarks)->with('clusters', $clusters)->with('workloads', $workloads);
     }
 
-    public function benchmark(Request $request)
+    public function store(Request $request)
     {
 
-        $parameters = '';
+        $num = $request->input('num-of-workloads');
+        $benchmark = new Benchmark();
+        $benchmark->name = $request->name;
+        $benchmark->size = $request->size;
+        $benchmark->cluster_id = $request->cluster;
+        $workloads = [];
+        for ($i = 0; $i < $num; $i++){
+
+            $workload['workload_id'] =  $request->input('workload-'.$i);
+            $workload['duration'] =  $request->input('duration-'.$i);
+            $workload['format'] =  $request->input('format-'.$i);
+            $workload['percentage'] =  $request->input('percentage-'.$i);
+
+            $workloads[] = $workload;
+        }
+
+        dd($benchmark);
+
+
+            $parameters = '';
         $parameters .= '-d ' . $request->duration . ' ';
         foreach ($request->workloads as $workload) {
             $parameters .= '-wl ' . $workload->path . '=' . $workload->percentage . ' ';

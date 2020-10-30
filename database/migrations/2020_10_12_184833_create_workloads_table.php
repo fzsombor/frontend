@@ -16,7 +16,11 @@ class CreateWorkloadsTable extends Migration
         Schema::create('workloads', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("path");
+            $table->string("filepath");
+            $table->boolean("requires_impala");
+            $table->boolean("requires_spark");
+            $table->boolean("requires_hive");
+            $table->boolean("requires_kafka");
             $table->timestamps();
         });
     }

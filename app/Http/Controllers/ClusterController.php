@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cluster;
+use App\Models\Workload;
 use Illuminate\Http\Request;
 
 class ClusterController extends Controller
@@ -16,9 +17,7 @@ class ClusterController extends Controller
 
     public function store(Request $request)
     {
-
-        $cluster = new Cluster;
-
+        $cluster = new Cluster();
         $cluster->name = $request->name;
         $cluster->cdh_version = $request->cdh_version;
         $cluster->hdp_version = $request->hdp_version;
@@ -41,9 +40,17 @@ class ClusterController extends Controller
         $cluster->spark_host = $request->spark_host;
         $cluster->spark_user = $request->spark_user;
         $cluster->spark_password = $request->spark_password;
+        $cluster->kafka_brokers = $request->kafka_brokers;
 
         $cluster->save();
 
-        $this->display();
+        return redirect()->route('clusters');
     }
+
+    public function delete(int $id)
+    {
+        Cluster::destroy($id);
+        return redirect()->route('clusters');
+    }
+
 }

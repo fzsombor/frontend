@@ -1,20 +1,37 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Clusters') }}
-        </h2>
+        <div class="flex ">
+            <div class="flex-1 font-semibold text-xl text-gray-800 text-left">
+                {{ __('Clusters') }}
+            </div>
+            <div class="flex-1 f text-xl text-gray-800 text-right">
+                <a id="add-cluster-button"
+                   class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">+
+                    Add Cluster</a>
+            </div>
+        </div>
     </x-slot>
+    <script>
+        $(document).ready(function () {
+            $("#add-cluster-button").click(function () {
+                $("#form-div").show();
+            });
+            $("#add-now").click(function () {
+                $("#form-div").show();
+            });
+            $("#cancel-cluster").click(function () {
+                $("#form-div").hide();
+            });
+        });
+    </script>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-
+            <div id="form-div" class="bg-white overflow-hidden shadow-xl rounded-lg my-4 hidden">
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-
                     <div class="mt-8 text-2xl">
-                        Welcome to your Jetstream application!
+                        Add a new cluster
                     </div>
-
                     <div class="mt-6 text-gray-500">
                         Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application.
                         Laravel is designed
@@ -25,30 +42,28 @@
                         ecosystem to be a breath of
                     </div>
                 </div>
-
-
-                <form class="w-full max-w-lg" method='post' action='add-cluster'>
-
+                <form class="w-full max-w-7xl" method='post' action='{{ url('add-cluster') }}'>
+                    @csrf
                     <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-                        <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="flex flex-wrap  mb-6">
                             <div class="w-full p-6">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                    Cluster details
+                                <label for="name" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                    Cluster name
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="name" type="text" placeholder="Cluster name" required>
+                                    id="name" name="name" type="text" placeholder="Cluster 1">
                             </div>
                         </div>
-                        <div class="flex flex-wrap mx-3 mb-6">
-                            <div class="w-full md:w-1/3 px-6 mb-6 md:mb-0">
+                        <div class="flex flex-wrap mb-6">
+                            <div class="w-full md:w-1/3 px-6  md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                        for="cdh_version">
                                     CDH Version
                                 </label>
                                 <input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                    id="cdh_version" type="text" placeholder="6.3.3" required>
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                    id="cdh_version" name="cdh_version" type="text" placeholder="6.3.3">
                             </div>
                             <div class="w-full md:w-1/3 px-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -57,7 +72,7 @@
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="hdp_version" type="text" placeholder="3.1.2" required>
+                                    id="hdp_version" name="hdp_version" type="text" placeholder="3.1.2">
                             </div>
                             <div class="w-full md:w-1/3 px-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -66,328 +81,348 @@
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="capacity" type="text" placeholder="5000" required>
+                                    id="capacity" name="capacity" type="text" placeholder="5000" required>
                                 <p class="text-gray-600 text-xs italic">Free storage space in GB</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-                        <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="flex flex-wrap  mb-6">
                             <div class="w-full p-6">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                    Impala Daemon host
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                       FOR="scp_host">
+                                    SCP host
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="impala_host" type="text" placeholder="impala.daemon.host.fqdn" required>
-                                <p class="text-gray-600 text-xs italic">An Impala Daemon must run on this host</p>
+                                    id="scp_host" name="scp_host" type="text" placeholder="impala.daemon.host.fqdn">
                             </div>
                         </div>
-                        <div class="flex flex-wrap mx-3 mb-6">
+                        <div class="flex flex-wrap mb-6">
                             <div class="w-full md:w-1/2 px-6 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                       for="impala_user">
+                                       for="scp_user">
                                     User
                                 </label>
                                 <input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                    id="impala_user" type="text" placeholder="root" required>
-                                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                    id="scp_user" name="scp_user" type="text" placeholder="root">
                             </div>
                             <div class="w-full md:w-1/2 px-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                       for="impala_user">
+                                       for="scp_password">
                                     Password
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="impala_user" type="password" placeholder="password" required>
+                                    id="scp_password" name="scp_password" type="password" placeholder="password">
                             </div>
                         </div>
                     </div>
                     <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-                        <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="flex flex-wrap mb-6">
                             <div class="w-full p-6">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                <label for="ssh_host" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                     SSH host
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="ssh_host" type="text" placeholder="ssh.host.fqdn" required>
+                                    id="ssh_host" name="ssh_host" type="text" placeholder="ssh.host.fqdn">
                                 <p class="text-gray-600 text-xs italic">An SSH server must run on this host</p>
                             </div>
                         </div>
-                        <div class="flex flex-wrap mx-3 mb-6">
+                        <div class="flex flex-wrap  mb-6">
                             <div class="w-full md:w-1/2 px-6 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                        for="ssh_user">
                                     User
                                 </label>
                                 <input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                    id="ssh_user" type="text" placeholder="root" required>
-                                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                    id="ssh_user" name="ssh_user" type="text" placeholder="root">
                             </div>
                             <div class="w-full md:w-1/2 px-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                       for="ssh_user">
+                                       for="ssh_password">
                                     Password
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="ssh_user" type="password" placeholder="password" required>
+                                    id="ssh_password" name="ssh_password" type="password" placeholder="password">
                             </div>
                         </div>
                     </div>
                     <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-                        <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="flex flex-wrap mb-6">
                             <div class="w-full p-6">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                       for="hive_host">
                                     HiveServer2 host
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="hive_host" type="text" placeholder="hive.host.fqdn" required>
+                                    id="hive_host" name="hive_host" type="text" placeholder="hive.host.fqdn">
                                 <p class="text-gray-600 text-xs italic">A HiveServer2 must run on this host</p>
                             </div>
                         </div>
-                        <div class="flex flex-wrap mx-3 mb-6">
+                        <div class="flex flex-wrap mb-6">
                             <div class="w-full md:w-1/2 px-6 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                        for="hive_user">
                                     User
                                 </label>
                                 <input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                    id="hive_user" type="text" placeholder="root" required>
-                                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                    id="hive_user" name="hive_user" type="text" placeholder="root">
                             </div>
                             <div class="w-full md:w-1/2 px-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                       for="hive_user">
+                                       for="hive_password">
                                     Password
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="hive_user" type="password" placeholder="password" required>
+                                    id="hive_password" name="hive_password" type="password" placeholder="password">
                             </div>
                         </div>
                     </div>
                     <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-                        <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="flex flex-wrap mb-6">
                             <div class="w-full p-6">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                       for="spark_host">
                                     Spark Gateway host
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="spark_host" type="text" placeholder="spark.host.fqdn" required>
+                                    id="spark_host" name="spark_host" type="text" placeholder="spark.host.fqdn">
                                 <p class="text-gray-600 text-xs italic">A Spark Gateway must run on this host</p>
                             </div>
                         </div>
-                        <div class="flex flex-wrap mx-3 mb-6">
+                        <div class="flex flex-wrap mb-6">
                             <div class="w-full md:w-1/2 px-6 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                        for="spark_user">
                                     User
                                 </label>
                                 <input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                    id="spark_user" type="text" placeholder="root" required>
-                                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                    id="spark_user" name="spark_user" type="text" placeholder="root">
+
                             </div>
                             <div class="w-full md:w-1/2 px-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                       for="spark_user">
+                                       for="spark_password">
                                     Password
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="spark_user" type="password" placeholder="password" required>
+                                    id="spark_password" name="spark_password" type="password" placeholder="password">
                             </div>
                         </div>
                     </div>
                     <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-                        <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="flex flex-wrap mb-6">
                             <div class="w-full p-6">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                       for="hdfs_host">
                                     HDFS client host
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="hdfs_host" type="text" placeholder="hdfs.host.fqdn" required>
-                                <p class="text-gray-600 text-xs italic">An HDFS client must run on this host connecting to its own Namenode</p>
+                                    id="hdfs_host" name="hdfs_host" type="text" placeholder="hdfs.host.fqdn">
+                                <p class="text-gray-600 text-xs italic">An HDFS client must run on this host connecting
+                                    to its own Namenode</p>
                             </div>
                         </div>
-                        <div class="flex flex-wrap mx-3 mb-6">
+                        <div class="flex flex-wrap mb-6">
                             <div class="w-full md:w-1/2 px-6 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                        for="hdfs_user">
                                     User
                                 </label>
                                 <input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                    id="hdfs_user" type="text" placeholder="root" required>
-                                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                    id="hdfs_user" name="hdfs_user" type="text" placeholder="root">
+
                             </div>
                             <div class="w-full md:w-1/2 px-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                       for="hdfs_user">
+                                       for="hdfs_password">
                                     Password
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="hdfs_user" type="password" placeholder="password" required>
+                                    id="hdfs_password" name="hdfs_password" type="password" placeholder="password">
                             </div>
                         </div>
                     </div>
                     <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-                        <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="flex flex-wrap mb-6">
                             <div class="w-full p-6">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                       for="impala_host">
                                     Impala Daemon host
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="impala_host" type="text" placeholder="impala.daemon.host.fqdn" required>
+                                    id="impala_host" name="impala_host" type="text" placeholder="impala.daemon.host.fqdn">
                                 <p class="text-gray-600 text-xs italic">An Impala Daemon must run on this host</p>
                             </div>
                         </div>
-                        <div class="flex flex-wrap mx-3 mb-6">
+                        <div class="flex flex-wrap mb-6">
                             <div class="w-full md:w-1/2 px-6 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                        for="impala_user">
                                     User
                                 </label>
                                 <input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                    id="impala_user" type="text" placeholder="root" required>
-                                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                    id="impala_user" name="impala_user" type="text" placeholder="root">
                             </div>
                             <div class="w-full md:w-1/2 px-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                       for="impala_user">
+                                       for="impala_password">
                                     Password
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="impala_user" type="password" placeholder="password" required>
+                                    id="impala_password" name="impala_password" type="password" placeholder="password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+                        <div class="flex flex-wrap mb-6">
+                            <div class="w-full p-6">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                       for="kafka_brokers">
+                                    Kafka Brokers
+                                </label>
+                                <input
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="kafka_brokers" name="kafka_brokers" type="text" placeholder="1.kafka.broker.fqdn,2.kafka.broker.fqdn">
+                                <p class="text-gray-600 text-xs italic">Delimited with commas(,)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap mb-6 p-3 justify-end">
+                            <div class="flex-shrink-1 px-3">
+                                <button
+                                    class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none"
+                                    type="submit" id="submit_btn" name="submit_btn">
+                                    Add Cluster
+                                </button>
+                            </div>
+                            <div class="flex-shrink-1 px-3">
+                                <button id="cancel-cluster"
+                                   class="px-5 py-2 border-red-500 border text-red-500 rounded transition duration-300 hover:bg-red-700 hover:text-white focus:outline-none">
+                                    Cancel</button>
                             </div>
                         </div>
                     </div>
                 </form>
 
-
             </div>
 
-            <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
-                <div class="p-6">
-                    <div class="flex items-center">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                             stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400">
-                            <path
-                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
-                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a
-                                href="https://laravel.com/docs">Documentation</a></div>
-                    </div>
 
-                    <div class="ml-12">
-                        <div class="mt-2 text-sm text-gray-500">
-                            Laravel has wonderful documentation covering every aspect of the framework. Whether you're
-                            new to the framework or have previous experience, we recommend reading all of the
-                            documentation from beginning to end.
-                        </div>
-
-                        <a href="https://laravel.com/docs">
-                            <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                                <div>Explore the documentation</div>
-
-                                <div class="ml-1 text-indigo-500">
-                                    <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
-                                        <path fill-rule="evenodd"
-                                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                              clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="p-6 border-t border-gray-200 md:border-t-0 md:border-l">
-                    <div class="flex items-center">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                             stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400">
-                            <path
-                                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                            <path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://laracasts.com">Laracasts</a>
-                        </div>
-                    </div>
-
-                    <div class="ml-12">
-                        <div class="mt-2 text-sm text-gray-500">
-                            Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development.
-                            Check them out, see for yourself, and massively level up your development skills in the
-                            process.
-                        </div>
-
-                        <a href="https://laracasts.com">
-                            <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                                <div>Start watching Laracasts</div>
-
-                                <div class="ml-1 text-indigo-500">
-                                    <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
-                                        <path fill-rule="evenodd"
-                                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                              clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="p-6 border-t border-gray-200">
-                    <div class="flex items-center">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                             stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400">
-                            <path
-                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a
-                                href="https://tailwindcss.com/">Tailwind</a></div>
-                    </div>
-
-                    <div class="ml-12">
-                        <div class="mt-2 text-sm text-gray-500">
-                            Laravel Jetstream is built with Tailwind, an amazing utility first CSS framework that
-                            doesn't get in your way. You'll be amazed how easily you can build and maintain fresh,
-                            modern designs with this wonderful framework at your fingertips.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-6 border-t border-gray-200 md:border-l">
-                    <div class="flex items-center">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                             stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400">
-                            <path
-                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                        </svg>
-                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">Authentication</div>
-                    </div>
-
-                    <div class="ml-12">
-                        <div class="mt-2 text-sm text-gray-500">
-                            Authentication and registration views are included with Laravel Jetstream, as well as
-                            support for user email verification and resetting forgotten passwords. So, you're free to
-                            get started what matters most: building your application.
-                        </div>
-                    </div>
+            <div class="p-6 bg-white rounded-lg shadow-xl">
+                @if(count($data) === 0)
+                    No cluster to show. <a href="#" id="add-now" class="text-blue-400 hover:text-blue-600 underline">Add
+                        one now!</a>
+                @else
+                <div class="overflow-auto">
+                    <table id="clusters-table"
+                           class="border-collapse w-full whitespace-no-wrap">
+                        <thead class="">
+                        <tr class="">
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                Name
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                Distribution
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                Version
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                Capacity
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                SSH Host
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                SSH User
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                SCP Host
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                SCP User
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                Spark Host
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                Spark User
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                Hive Host
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                Hive User
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                Impala Host
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                Impala User
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                HDFS Host
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                HDFS User
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                Kafka Brokers
+                            </th>
+                            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                Remove
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="">
+                        @foreach($data as $cluster)
+                            <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{Illuminate\Support\Str::limit($cluster->name, 35)}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{($cluster->cdh_version != null)? 'CDH':'HDP'}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{($cluster->cdh_version != null)? $cluster->cdh_version:$cluster->hdp_version}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->capacity}}
+                                    GB
+                                </td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->ssh_host}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->ssh_user}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->scp_host}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->scp_user}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->spark_host}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->spark_user}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->hive_host}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->hive_user}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->impala_host}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->impala_user}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->hdfs_host}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->hdfs_user}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{$cluster->kafka_brokers}}</td>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                    <a href="clusters/delete/{{$cluster->id}}"
+                                       class="px-5 py-2 border-red-500 border text-red-500 rounded transition duration-300 hover:bg-red-700 hover:text-white focus:outline-none">Remove</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        @endif
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
